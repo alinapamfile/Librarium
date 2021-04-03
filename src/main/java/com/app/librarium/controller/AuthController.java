@@ -1,15 +1,26 @@
 package com.app.librarium.controller;
 
-import org.json.simple.JSONObject;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.app.librarium.model.User;
+import com.app.librarium.service.AuthServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/auth")
+@RestController
 public class AuthController {
 
-    @PostMapping("/register")
-    public JSONObject register(@RequestBody JSONObject request) {
+    @Autowired
+    private AuthServiceImpl userService;
 
+    @PostMapping("auth/register")
+    @ResponseBody
+    public ResponseEntity<Object> register(@RequestBody User user) {
+        return userService.register(user);
+    }
+
+    @PostMapping("auth/login")
+    @ResponseBody
+    public ResponseEntity<Object> login(@RequestBody User user) {
+        return userService.login(user);
     }
 }

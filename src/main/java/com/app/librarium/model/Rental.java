@@ -1,9 +1,11 @@
 package com.app.librarium.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
+@Document(collection = "rental")
 public class Rental {
     @Id
     private String id;
@@ -17,6 +19,14 @@ public class Rental {
         this.userId = userId;
         this.rentedDate = rentedDate;
         this.returnedDate = returnedDate;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getItemId() {

@@ -1,7 +1,9 @@
 package com.app.librarium.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "comicbook")
 public class ComicBook {
     @Id
     private String id;
@@ -15,6 +17,14 @@ public class ComicBook {
         this.number = number;
         this.year = year;
         this.rating = rating;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getSeries() {

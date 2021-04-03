@@ -1,7 +1,9 @@
 package com.app.librarium.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "user")
 public class User {
     @Id
     private String id;
@@ -11,12 +13,21 @@ public class User {
     private String lastname;
     private boolean admin;
 
-    public User(String email, String password, String firstname, String lastname, boolean admin) {
+    public User(String id, String email, String password, String firstname, String lastname, boolean admin) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
         this.admin = admin;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getEmail() {
