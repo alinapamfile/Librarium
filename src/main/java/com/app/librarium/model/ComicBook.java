@@ -10,9 +10,9 @@ public class ComicBook {
     private String series;
     private Integer number;
     private Integer year;
-    private Integer rating;
+    private Double rating;
 
-    public ComicBook(String series, Integer number, Integer year, Integer rating) {
+    public ComicBook(String series, Integer number, Integer year, Double rating) {
         this.series = series;
         this.number = number;
         this.year = year;
@@ -51,11 +51,11 @@ public class ComicBook {
         this.year = year;
     }
 
-    public Integer getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 }
