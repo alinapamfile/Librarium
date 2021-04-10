@@ -7,12 +7,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Book {
     @Id
     private String id;
+    private String ISBN;
     private String title;
     private String author;
     private Integer year;
     private Double rating;
 
-    public Book(String title, String author, Integer year, Double rating) {
+    public Book(String ISBN, String title, String author, Integer year, Double rating) {
+        this.ISBN = ISBN;
         this.title = title;
         this.author = author;
         this.year = year;
@@ -25,6 +27,14 @@ public class Book {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
 
     public String getTitle() {
