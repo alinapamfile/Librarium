@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "comicbook")
-public class ComicBook extends Item {
+public class ComicBook extends Item implements Comparable<ComicBook> {
     @Id
     private String id;
     private String series;
@@ -73,5 +73,14 @@ public class ComicBook extends Item {
     @Override
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public int compareTo(ComicBook o) {
+        if (this.series.equals(o.series)) {
+            return o.number.compareTo(this.number);
+        } else {
+            return this.series.compareTo(o.series);
+        }
     }
 }

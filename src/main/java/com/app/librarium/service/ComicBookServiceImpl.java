@@ -1,8 +1,6 @@
 package com.app.librarium.service;
 
-import com.app.librarium.model.Book;
 import com.app.librarium.model.ComicBook;
-import com.app.librarium.repository.BookRepository;
 import com.app.librarium.repository.ComicBookRepository;
 import com.mongodb.MongoException;
 import org.springframework.beans.factory.annotation.Autowired;

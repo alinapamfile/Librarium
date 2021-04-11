@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "user")
-public class User {
+public class User implements Comparable<User> {
     @Id
     private String id;
     private String email;
@@ -68,5 +68,12 @@ public class User {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    @Override
+    public int compareTo(User o) {
+        String name1 = this.firstname + " " + this.lastname;
+        String name2 = o.firstname + " " + o.lastname;
+        return name1.compareTo(name2);
     }
 }
