@@ -12,13 +12,15 @@ public class Book {
     private String author;
     private Integer year;
     private Double rating;
+    private Integer quantity;
 
-    public Book(String ISBN, String title, String author, Integer year, Double rating) {
+    public Book(String ISBN, String title, String author, Integer year, Double rating, Integer quantity) {
         this.ISBN = ISBN;
         this.title = title;
         this.author = author;
         this.year = year;
         this.rating = rating;
+        this.quantity = quantity;
     }
 
     public String getId() {
@@ -67,5 +69,13 @@ public class Book {
 
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

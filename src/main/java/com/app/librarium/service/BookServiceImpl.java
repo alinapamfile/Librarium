@@ -29,6 +29,13 @@ public class BookServiceImpl implements BookService {
             ));
         }
 
+        if (book.getQuantity().compareTo(0) < 0) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
+                    "success", "false",
+                    "message", "Quantity can't be negative"
+            ));
+        }
+
         try {
             book = bookRepository.insert(book);
         } catch (MongoException e) {
@@ -128,6 +135,13 @@ public class BookServiceImpl implements BookService {
                 case "author": { book.setAuthor((String) changes.get("author")); break; }
                 case "year": { book.setYear((Integer) changes.get("year")); break; }
                 case "rating": { book.setRating((Double) changes.get("rating")); break; }
+                case "quantity": {
+                    Integer quantity = (Integer) changes.get("quantity");
+                    if (quantity.compareTo(0) >= 0) {
+                        book.setQuantity(quantity);
+                    }
+                    break;
+                }
             }
         });
 

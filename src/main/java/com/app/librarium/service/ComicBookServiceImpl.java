@@ -21,6 +21,13 @@ public class ComicBookServiceImpl implements ComicBookService {
 
     @Override
     public ResponseEntity<Object> addComicBook(ComicBook comicBook) {
+        if (comicBook.getQuantity().compareTo(0) < 0) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
+                    "success", "false",
+                    "message", "Quantity can't be negative"
+            ));
+        }
+
         try {
             comicBook = comicBookRepository.insert(comicBook);
         } catch (MongoException e) {
@@ -86,6 +93,13 @@ public class ComicBookServiceImpl implements ComicBookService {
                 case "number": { comicBook.setNumber((Integer) changes.get("number")); break; }
                 case "year": { comicBook.setYear((Integer) changes.get("year")); break; }
                 case "rating": { comicBook.setRating((Double) changes.get("rating")); break; }
+                case "quantity": {
+                    Integer quantity = (Integer) changes.get("quantity");
+                    if (quantity.compareTo(0) >= 0) {
+                        comicBook.setQuantity(quantity);
+                    }
+                    break;
+                }
             }
         });
 

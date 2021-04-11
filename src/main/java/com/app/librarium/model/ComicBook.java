@@ -11,12 +11,14 @@ public class ComicBook {
     private Integer number;
     private Integer year;
     private Double rating;
+    private Integer quantity;
 
-    public ComicBook(String series, Integer number, Integer year, Double rating) {
+    public ComicBook(String series, Integer number, Integer year, Double rating, Integer quantity) {
         this.series = series;
         this.number = number;
         this.year = year;
         this.rating = rating;
+        this.quantity = quantity;
     }
 
     public String getId() {
@@ -57,5 +59,13 @@ public class ComicBook {
 
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }
