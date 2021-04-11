@@ -1,6 +1,5 @@
 package com.app.librarium.service;
 
-import com.app.librarium.model.Book;
 import com.app.librarium.model.User;
 import com.app.librarium.repository.UserRepository;
 import com.mongodb.MongoException;

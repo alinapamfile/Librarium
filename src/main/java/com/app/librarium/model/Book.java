@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "book")
-public class Book {
+public class Book extends Item {
     @Id
     private String id;
     private String ISBN;
@@ -23,10 +23,12 @@ public class Book {
         this.quantity = quantity;
     }
 
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public void setId(String id) {
         this.id = id;
     }
@@ -63,18 +65,22 @@ public class Book {
         this.year = year;
     }
 
+    @Override
     public Double getRating() {
         return rating;
     }
 
+    @Override
     public void setRating(Double rating) {
         this.rating = rating;
     }
 
+    @Override
     public Integer getQuantity() {
         return quantity;
     }
 
+    @Override
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
